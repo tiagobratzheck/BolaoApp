@@ -117,10 +117,10 @@ export default function Perfil({ route, navigation }) {
           },
           urlImage: result.data().urlImage
         })
-        setLoading(false)
         if (result.data().urlImage !== undefined) {
           UserService.getImageProfileUser(result.data().urlImage).then((url) => {
             if (url !== undefined) {
+              setLoading(false)
               setImage(url)
             }
           }).catch((err) => {

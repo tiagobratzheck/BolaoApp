@@ -15,7 +15,7 @@ import {
   Button
 } from "react-native-paper"
 
-const times = [
+let times = [
   { label: 'Flamengo', value: 'Flamengo', },
   { label: 'Santos', value: 'Santos', },
   { label: 'Palmeiras', value: 'Palmeiras', },
@@ -60,6 +60,12 @@ export default function Cadastro({ navigation }) {
 
   const dispatch = useDispatch();
 
+  const setValoresAposta = (posicao, time) => {
+    setAposta(state => ({
+      ...state, [posicao]: time,
+    }))
+  }
+
   const saveUserBet = async () => {
     const valores = {
       nome: user.nome,
@@ -79,7 +85,7 @@ export default function Cadastro({ navigation }) {
     })
     dispatch(userAction.getUser(user.email));
   }
-
+  console.log(aposta)
   return (
     <React.Fragment>
       <Header navigation={navigation} labels={title = "Cadastro de aposta"} />
@@ -90,7 +96,7 @@ export default function Cadastro({ navigation }) {
         {
           msg ?
             <View>
-              <Text style={[styles.title,{marginLeft: 45}]}>{msg}</Text>
+              <Text style={[styles.title, { marginLeft: 45 }]}>{msg}</Text>
               <View>
                 <Button
                   style={styles.button}
@@ -112,11 +118,7 @@ export default function Cadastro({ navigation }) {
                       color: '#1f2021',
                     }}
                     items={times}
-                    onValueChange={value => {
-                      setAposta(state => ({
-                        ...state, '1°': value,
-                      }))
-                    }}
+                    onValueChange={value => { setValoresAposta('1°', value) }}
                     value={aposta["1°"]}
                     style={styles.inputAndroid}
                   />
@@ -129,11 +131,7 @@ export default function Cadastro({ navigation }) {
                       color: '#1f2021',
                     }}
                     items={times}
-                    onValueChange={value => {
-                      setAposta(state => ({
-                        ...state, '2°': value,
-                      }))
-                    }}
+                    onValueChange={value => { setValoresAposta('2°', value) }}
                     value={aposta["2°"]}
                     style={styles.inputAndroid}
                   />
@@ -146,11 +144,7 @@ export default function Cadastro({ navigation }) {
                       color: '#1f2021',
                     }}
                     items={times}
-                    onValueChange={value => {
-                      setAposta(state => ({
-                        ...state, '3°': value,
-                      }))
-                    }}
+                    onValueChange={value => { setValoresAposta('3°', value) }}
                     value={aposta["3°"]}
                     style={styles.inputAndroid}
                   />
@@ -163,11 +157,7 @@ export default function Cadastro({ navigation }) {
                       color: '#1f2021',
                     }}
                     items={times}
-                    onValueChange={value => {
-                      setAposta(state => ({
-                        ...state, '4°': value,
-                      }))
-                    }}
+                    onValueChange={value => { setValoresAposta('4°', value) }}
                     value={aposta["4°"]}
                     style={styles.inputAndroid}
                   />
@@ -180,11 +170,7 @@ export default function Cadastro({ navigation }) {
                       color: '#1f2021',
                     }}
                     items={times}
-                    onValueChange={value => {
-                      setAposta(state => ({
-                        ...state, '5°': value,
-                      }))
-                    }}
+                    onValueChange={value => { setValoresAposta('5°', value) }}
                     value={aposta["5°"]}
                     style={styles.inputAndroid}
                   />
@@ -197,11 +183,7 @@ export default function Cadastro({ navigation }) {
                       color: '#1f2021',
                     }}
                     items={times}
-                    onValueChange={value => {
-                      setAposta(state => ({
-                        ...state, '6°': value,
-                      }))
-                    }}
+                    onValueChange={value => { setValoresAposta('6°', value) }}
                     value={aposta["6°"]}
                     style={styles.inputAndroid}
                   />
@@ -214,11 +196,7 @@ export default function Cadastro({ navigation }) {
                       color: '#1f2021',
                     }}
                     items={times}
-                    onValueChange={value => {
-                      setAposta(state => ({
-                        ...state, '17°': value,
-                      }))
-                    }}
+                    onValueChange={value => { setValoresAposta('17°', value) }}
                     value={aposta["17°"]}
                     style={styles.inputAndroid}
                   />
@@ -231,11 +209,7 @@ export default function Cadastro({ navigation }) {
                       color: '#1f2021',
                     }}
                     items={times}
-                    onValueChange={value => {
-                      setAposta(state => ({
-                        ...state, '18°': value,
-                      }))
-                    }}
+                    onValueChange={value => { setValoresAposta('18°', value) }}
                     value={aposta["18°"]}
                     style={styles.inputAndroid}
                   />
@@ -248,11 +222,7 @@ export default function Cadastro({ navigation }) {
                       color: '#1f2021',
                     }}
                     items={times}
-                    onValueChange={value => {
-                      setAposta(state => ({
-                        ...state, '19°': value,
-                      }))
-                    }}
+                    onValueChange={value => { setValoresAposta('19°', value) }}
                     value={aposta["19°"]}
                     style={styles.inputAndroid}
                   />
@@ -265,11 +235,7 @@ export default function Cadastro({ navigation }) {
                       color: '#1f2021',
                     }}
                     items={times}
-                    onValueChange={value => {
-                      setAposta(state => ({
-                        ...state, '20°': value,
-                      }))
-                    }}
+                    onValueChange={value => { setValoresAposta('20°', value) }}
                     value={aposta["20°"]}
                     style={styles.inputAndroid}
                   />

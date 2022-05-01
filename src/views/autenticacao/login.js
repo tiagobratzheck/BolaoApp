@@ -69,7 +69,21 @@ export default function Login({ navigation }) {
                     navigation.navigate("perfil", { propsEmail: email.toLowerCase() });
                 })
                 .catch((erro) => {
-                    setMsg(erro);
+                    setLoading(false)
+                    switch (erro) {
+                        case 'The password is invalid or the user does not have a password.':
+                            setMsg('Usuário ou senha inválidos!');
+                            break;
+                        case 'There is no user record corresponding to this identifier. The user may have been deleted.':
+                            setMsg('Email não encontrado na base de dados!');
+                            break;
+                        case 'The email address is badly formatted.':
+                            setMsg('O formato do seu email é inválido!');
+                            break;
+                        default:
+                            setMsg('Erro de conexão. Tente mais tarde.');
+                            break;
+                    }
                 })
         }
     };
@@ -119,14 +133,19 @@ export default function Login({ navigation }) {
                             />
                         </View>
                         <View style={styles.buttonBox}>
-                            <Button mode="contained" onPress={validarCredenciais}>
-                                Login
-                            </Button>
                             <Button
+                                style={{ width: 280 }}
+                                mode="outlined" onPress={validarCredenciais}>
+                                Entrar
+                            </Button>
+                        </View>
+                        <View style={styles.buttonBox}>
+                            <Button
+                                style={{ width: 280 }}
                                 mode="contained"
                                 onPress={() => navigation.navigate("registro")}
                             >
-                                Cadastrar
+                                Ainda não fiz meu cadastro
                             </Button>
                         </View>
                         <View>
